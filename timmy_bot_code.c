@@ -85,6 +85,7 @@ task autonomous()
 
 task usercontrol()
 {
+	int intakeSpeed = 0;
 	// User control code here, inside the loop
 
 	while (true)
@@ -97,32 +98,47 @@ task usercontrol()
 		motor[frontleftMotor] = vexRT[Ch3];
 		motor[backleftMotor]  = vexRT[Ch3];
 
-		//intake?
-		if(vexRT[Btn5U] == 1)       	//If button 5U is pressed...
-		{
-			motor[intakeMotor] = 127;    	//...raise the arm.
+		//intake
+		if(vexRT[Btn5U] == 1){
+			intakeSpeed = 127;
 		}
-		else if(vexRT[Btn5D] == 1)  	//Else, if button 5D is pressed...
-		{
-			motor[intakeMotor] = -127;   	//...lower the arm.
+		else if (vexRT[Btn5D] == 1){
+			intakeSpeed = -127;
 		}
-		else                      		//Else (neither button is pressed)...
-		{
-			motor[intakeMotor] = 0;      	//...stop the arm.
+		else if (vexRT[Btn7U] == 1){
+			intakeSpeed = 0;
 		}
-		//lift?
-		if(vexRT[Btn6U] == 1)       	//If Button 6U is pressed...
+
+		motor[intakeMotor] = intakeSpeed;
+
+		//if(vexRT[Btn5U] == 1)
+		//{
+		//	motor[intakeMotor] = 127;
+		//}
+		//else if(vexRT[Btn5D] == 1)
+		//{
+		//	motor[intakeMotor] = -127;
+		//}
+		//else
+		//{
+		//	motor[intakeMotor] = 0;
+		//}
+
+		//lift
+		if(vexRT[Btn6U] == 1)
 		{
-			motor[liftMotor] = 127;  		//...close the gripper.
+			motor[liftMotor] = 127;
 		}
-		else if(vexRT[Btn6D] == 1)  	//Else, if button 6D is pressed...
+		else if(vexRT[Btn6D] == 1)
 		{
-			motor[liftMotor] = -127; 		//...open the gripper.
+			motor[liftMotor] = -127;
 		}
-		else                      		//Else (neither button is pressed)...
+		else
 		{
-			motor[liftMotor] = 0;    		//...stop the gripper.
+			motor[liftMotor] = 0;
 		}
+
+
 		//remotecontrolend
 	}
 }
