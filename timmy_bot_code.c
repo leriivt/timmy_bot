@@ -65,11 +65,16 @@ task autonomous()
 	startMotor(backleftMotor,-127);
 	startMotor(frontrightMotor,-127);
 	startMotor(backrightMotor,-127);
-	wait(2);
+	wait(1.5);
 	stopMotor(frontleftMotor);
 	stopMotor(backleftMotor);
 	stopMotor(frontrightMotor);
 	stopMotor(backrightMotor);
+
+	//startMotor(frontleftMotor,-127);
+	//startMotor(backleftMotor,-127);
+	//wait(1);
+	//stopMotor()
 	//autonend
 }
 
@@ -91,6 +96,7 @@ task usercontrol()
 	while (true)
 	{
 		//remotecontrolstart
+
 		//Right Wheels
 		motor[frontrightMotor] = vexRT[Ch2];
 		motor[backrightMotor]  = vexRT[Ch2];
@@ -98,6 +104,16 @@ task usercontrol()
 		motor[frontleftMotor] = vexRT[Ch3];
 		motor[backleftMotor]  = vexRT[Ch3];
 
+
+	//motor[frontleftMotor] = vexRT[Ch3];
+	//motor[backleftMotor] = vexRT[Ch3];
+	//motor[frontrightMotor] = vexRT[Ch3];
+	//motor[backrightMotor] = vexRT[Ch3];
+
+	//motor[frontleftMotor]  = (vexRT[Ch2] + vexRT[Ch1])/2;  // (y + x)/2
+	//motor[frontrightMotor]  = (vexRT[Ch2] + vexRT[Ch1])/2;  // (y + x)/2
+ //   motor[backrightMotor] = (vexRT[Ch2] - vexRT[Ch1])/2;  // (y - x)/2
+ //motor[backleftMotor] = (vexRT[Ch2] - vexRT[Ch1])/2;  // (y - x)/2
 		//intake
 		if(vexRT[Btn5U] == 1){
 			intakeSpeed = 127;
@@ -115,7 +131,7 @@ task usercontrol()
 		//{
 		//	motor[intakeMotor] = 127;
 		//}
-		//else if(vexRT[Btn5D] == 1)
+		//else if(vexRT[Btn5D] == 1)q
 		//{
 		//	motor[intakeMotor] = -127;
 		//}
@@ -138,7 +154,20 @@ task usercontrol()
 			motor[liftMotor] = 0;
 		}
 
+		//Special Buttons
+		if(vexRT[Btn7L] == 1)
+		{
+			motor[liftMotor] = 80;
+			wait(1.6);
+			motor[liftMotor] = 0;
 
+			wait(1);
+
+			motor[liftMotor] = -80;
+			wait(1.6);
+			motor(liftMotor) = 0;
+		}
+		//Special Buttons End
 		//remotecontrolend
 	}
 }
