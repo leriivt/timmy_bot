@@ -1,3 +1,4 @@
+#pragma config(Sensor, dgtl1,  jumper,         sensorDigitalIn)
 #pragma config(Motor,  port1,           frontleftMotor, tmotorVex393_HBridge, openLoop)
 #pragma config(Motor,  port2,           backleftMotor, tmotorVex393_MC29, openLoop)
 #pragma config(Motor,  port3,           backrightMotor, tmotorVex393_MC29, openLoop, reversed)
@@ -60,21 +61,53 @@ void pre_auton()
 task autonomous()
 {
 	//autonstart
-	wait(10);
+	//wait(10);
 	startMotor(frontleftMotor,-127);
 	startMotor(backleftMotor,-127);
 	startMotor(frontrightMotor,-127);
 	startMotor(backrightMotor,-127);
-	wait(1.5);
+	wait(1.3);
 	stopMotor(frontleftMotor);
 	stopMotor(backleftMotor);
 	stopMotor(frontrightMotor);
 	stopMotor(backrightMotor);
+	wait(2);
+	if(SensorValue[jumper] == 0){  //blue (jumper out)
+		startMotor(frontrightMotor,-127);
+		startMotor(backrightMotor,-127);
+		wait(5);
+		stopMotor(frontrightMotor);
+		stopMotor(backrightMotor);
 
-	//startMotor(frontleftMotor,-127);
-	//startMotor(backleftMotor,-127);
-	//wait(1);
-	//stopMotor()
+	}
+	else{ //red
+		startMotor(frontleftMotor,-127);
+		startMotor(backleftMotor,-127);
+		startMotor(frontrightMotor,127);
+		startMotor(backrightMotor,127);
+		wait(0.625);
+
+		startMotor(frontleftMotor,-127);
+		startMotor(backleftMotor,-127);
+		startMotor(frontrightMotor,-127);
+		startMotor(backrightMotor,-127);
+		wait(0.5);
+		stopMotor(frontleftMotor);
+		stopMotor(backleftMotor);
+		stopMotor(frontrightMotor);
+		stopMotor(backrightMotor);
+
+			motor[liftMotor] = 80;
+			wait(1.6);
+			motor[liftMotor] = 0;
+
+			wait(1);
+
+			motor[liftMotor] = -80;
+			wait(1.6);
+			motor(liftMotor) = 0;
+	}
+
 	//autonend
 }
 
@@ -105,15 +138,15 @@ task usercontrol()
 		motor[backleftMotor]  = vexRT[Ch3];
 
 
-	//motor[frontleftMotor] = vexRT[Ch3];
-	//motor[backleftMotor] = vexRT[Ch3];
-	//motor[frontrightMotor] = vexRT[Ch3];
-	//motor[backrightMotor] = vexRT[Ch3];
+		//motor[frontleftMotor] = vexRT[Ch3];
+		//motor[backleftMotor] = vexRT[Ch3];
+		//motor[frontrightMotor] = vexRT[Ch3];
+		//motor[backrightMotor] = vexRT[Ch3];
 
-	//motor[frontleftMotor]  = (vexRT[Ch2] + vexRT[Ch1])/2;  // (y + x)/2
-	//motor[frontrightMotor]  = (vexRT[Ch2] + vexRT[Ch1])/2;  // (y + x)/2
- //   motor[backrightMotor] = (vexRT[Ch2] - vexRT[Ch1])/2;  // (y - x)/2
- //motor[backleftMotor] = (vexRT[Ch2] - vexRT[Ch1])/2;  // (y - x)/2
+		//motor[frontleftMotor]  = (vexRT[Ch2] + vexRT[Ch1])/2;  // (y + x)/2
+		//motor[frontrightMotor]  = (vexRT[Ch2] + vexRT[Ch1])/2;  // (y + x)/2
+		//   motor[backrightMotor] = (vexRT[Ch2] - vexRT[Ch1])/2;  // (y - x)/2
+		//motor[backleftMotor] = (vexRT[Ch2] - vexRT[Ch1])/2;  // (y - x)/2
 		//intake
 		if(vexRT[Btn5U] == 1){
 			intakeSpeed = 127;
