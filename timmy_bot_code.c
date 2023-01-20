@@ -62,6 +62,8 @@ task autonomous()
 {
 	//autonstart
 	//wait(10);
+	
+	//move forwards
 	startMotor(frontleftMotor,-127);
 	startMotor(backleftMotor,-127);
 	startMotor(frontrightMotor,-127);
@@ -72,21 +74,17 @@ task autonomous()
 	stopMotor(frontrightMotor);
 	stopMotor(backrightMotor);
 	wait(2);
+	
+	
 	if(SensorValue[jumper] == 0){  //blue (jumper out)
+		//turn right
+		startMotor(frontleftMotor,127);
+		startMotor(backleftMotor,127);
 		startMotor(frontrightMotor,-127);
 		startMotor(backrightMotor,-127);
-		wait(5);
-		stopMotor(frontrightMotor);
-		stopMotor(backrightMotor);
-
-	}
-	else{ //red
-		startMotor(frontleftMotor,-127);
-		startMotor(backleftMotor,-127);
-		startMotor(frontrightMotor,127);
-		startMotor(backrightMotor,127);
 		wait(0.625);
-
+		
+		//move forward
 		startMotor(frontleftMotor,-127);
 		startMotor(backleftMotor,-127);
 		startMotor(frontrightMotor,-127);
@@ -96,16 +94,48 @@ task autonomous()
 		stopMotor(backleftMotor);
 		stopMotor(frontrightMotor);
 		stopMotor(backrightMotor);
+		
+		//score ball
+		motor[liftMotor] = 80;
+		wait(1.6);
+		motor[liftMotor] = 0;
 
-			motor[liftMotor] = 80;
-			wait(1.6);
-			motor[liftMotor] = 0;
+		wait(1);
 
-			wait(1);
+		motor[liftMotor] = -80;
+		wait(1.6);
+		motor(liftMotor) = 0;
 
-			motor[liftMotor] = -80;
-			wait(1.6);
-			motor(liftMotor) = 0;
+	}
+	else{ //red (jumper in)
+		//turn left
+		startMotor(frontleftMotor,-127);
+		startMotor(backleftMotor,-127);
+		startMotor(frontrightMotor,127);
+		startMotor(backrightMotor,127);
+		wait(0.625);
+		
+		//move forward
+		startMotor(frontleftMotor,-127);
+		startMotor(backleftMotor,-127);
+		startMotor(frontrightMotor,-127);
+		startMotor(backrightMotor,-127);
+		wait(0.5);
+		stopMotor(frontleftMotor);
+		stopMotor(backleftMotor);
+		stopMotor(frontrightMotor);
+		stopMotor(backrightMotor);
+		
+		//score ball
+		motor[liftMotor] = 80;
+		wait(1.6);
+		motor[liftMotor] = 0;
+
+		wait(1);
+
+		motor[liftMotor] = -80;
+		wait(1.6);
+		motor(liftMotor) = 0;
 	}
 
 	//autonend
