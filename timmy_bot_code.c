@@ -1,4 +1,4 @@
-#pragma config(Sensor, dgtl1,  jumper,         sensorDigitalIn)
+#pragma config(Sensor, dgtl11,  jumper,         sensorDigitalIn)
 #pragma config(Motor,  port1,           frontleftMotor, tmotorVex393_HBridge, openLoop)
 #pragma config(Motor,  port2,           backleftMotor, tmotorVex393_MC29, openLoop)
 #pragma config(Motor,  port3,           backrightMotor, tmotorVex393_MC29, openLoop, reversed)
@@ -76,13 +76,13 @@ task autonomous()
 	wait(2);
 	
 	
-	if(SensorValue[jumper] == 0){  //blue (jumper out)
+	if(SensorValue[jumper] == 0){  //blue (jumper in)
 		//turn right
 		startMotor(frontleftMotor,127);
 		startMotor(backleftMotor,127);
 		startMotor(frontrightMotor,-127);
 		startMotor(backrightMotor,-127);
-		wait(0.625);
+		wait(0.65);
 		
 		//move forward
 		startMotor(frontleftMotor,-127);
@@ -107,13 +107,13 @@ task autonomous()
 		motor(liftMotor) = 0;
 
 	}
-	else{ //red (jumper in)
+	else{ //red (jumper out)
 		//turn left
 		startMotor(frontleftMotor,-127);
 		startMotor(backleftMotor,-127);
 		startMotor(frontrightMotor,127);
 		startMotor(backrightMotor,127);
-		wait(0.625);
+		wait(0.65);
 		
 		//move forward
 		startMotor(frontleftMotor,-127);
