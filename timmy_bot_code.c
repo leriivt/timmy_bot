@@ -139,14 +139,27 @@ task autonomous()
 
 
 		//---------------------UNTESTED AUTON CODE BELOW--------------------------------------------------------
-		/*
 
+/*
 		//start intake
 		startMotor(intakeMotor, 127);
 
+		//turn to face second ball
+		startMotor(frontleftMotor,-127);
+		startMotor(backleftMotor,-127);
+		startMotor(frontrightMotor,127);
+		startMotor(backrightMotor,127);
+		wait(0.3);
+		stopMotor(frontleftMotor);
+		stopMotor(backleftMotor);
+		stopMotor(frontrightMotor);
+		stopMotor(backrightMotor);
+
+
+
 		//drive to get second ball
-		startMotor(frontleftMotor,120); //left motors are slower to try to make bot turn slightly left
-		startMotor(backleftMotor,120);
+		startMotor(frontleftMotor,127); //left motors are slower to try to make bot turn slightly left
+		startMotor(backleftMotor,127);
 		startMotor(frontrightMotor,127);
 		startMotor(backrightMotor,127);
 		wait(0.45);
@@ -162,6 +175,11 @@ task autonomous()
 		startMotor(backleftMotor,-120);
 		startMotor(frontrightMotor,-127);
 		startMotor(backrightMotor,-127);
+		wait(0.5);
+		stopMotor(frontleftMotor);
+		stopMotor(backleftMotor);
+		stopMotor(frontrightMotor);
+		stopMotor(backrightMotor);
 
 		//score second ball
 		motor[liftMotor] = 80;
@@ -173,8 +191,8 @@ task autonomous()
 		motor[liftMotor] = -80;
 		wait(1.6);
 		motor(liftMotor) = 0;
+*/
 
-		*/
 	}
 
 	//autonend
@@ -233,7 +251,7 @@ task usercontrol()
 		//{
 		//	motor[intakeMotor] = 127;
 		//}
-		//else if(vexRT[Btn5D] == 1)q
+		//else if(vexRT[Btn5D] == 1)
 		//{
 		//	motor[intakeMotor] = -127;
 		//}
