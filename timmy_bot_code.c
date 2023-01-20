@@ -62,7 +62,7 @@ task autonomous()
 {
 	//autonstart
 	//wait(10);
-	
+
 	//move forwards
 	startMotor(frontleftMotor,-127);
 	startMotor(backleftMotor,-127);
@@ -74,8 +74,8 @@ task autonomous()
 	stopMotor(frontrightMotor);
 	stopMotor(backrightMotor);
 	wait(0.5);
-	
-	
+
+
 	if(SensorValue[jumper] == 0){  //blue (jumper in)
 		//turn right
 		startMotor(frontleftMotor,127);
@@ -83,7 +83,7 @@ task autonomous()
 		startMotor(frontrightMotor,-127);
 		startMotor(backrightMotor,-127);
 		wait(0.65);
-		
+
 		//move forward
 		startMotor(frontleftMotor,-127);
 		startMotor(backleftMotor,-127);
@@ -94,7 +94,7 @@ task autonomous()
 		stopMotor(backleftMotor);
 		stopMotor(frontrightMotor);
 		stopMotor(backrightMotor);
-		
+
 		//score ball
 		motor[liftMotor] = 80;
 		wait(1.6);
@@ -114,7 +114,7 @@ task autonomous()
 		startMotor(frontrightMotor,127);
 		startMotor(backrightMotor,127);
 		wait(0.65);
-		
+
 		//move forward
 		startMotor(frontleftMotor,-127);
 		startMotor(backleftMotor,-127);
@@ -125,7 +125,7 @@ task autonomous()
 		stopMotor(backleftMotor);
 		stopMotor(frontrightMotor);
 		stopMotor(backrightMotor);
-		
+
 		//score ball
 		motor[liftMotor] = 80;
 		wait(1.6);
@@ -136,12 +136,15 @@ task autonomous()
 		motor[liftMotor] = -80;
 		wait(1.6);
 		motor(liftMotor) = 0;
-		
-		
+
+
+		//---------------------UNTESTED AUTON CODE BELOW--------------------------------------------------------
+		/*
+
 		//start intake
 		startMotor(intakeMotor, 127);
-		
-		//drive to get second ball	
+
+		//drive to get second ball
 		startMotor(frontleftMotor,120); //left motors are slower to try to make bot turn slightly left
 		startMotor(backleftMotor,120);
 		startMotor(frontrightMotor,127);
@@ -151,15 +154,15 @@ task autonomous()
 		stopMotor(backleftMotor);
 		stopMotor(frontrightMotor);
 		stopMotor(backrightMotor);
-		
+
 		wait(4); //wait a few while ball intakes
-		
+
 		//drive back to scoring area
 		startMotor(frontleftMotor,-120); //left motors still slower
 		startMotor(backleftMotor,-120);
 		startMotor(frontrightMotor,-127);
 		startMotor(backrightMotor,-127);
-		
+
 		//score second ball
 		motor[liftMotor] = 80;
 		wait(1.6);
@@ -170,8 +173,8 @@ task autonomous()
 		motor[liftMotor] = -80;
 		wait(1.6);
 		motor(liftMotor) = 0;
-		
-		
+
+		*/
 	}
 
 	//autonend
