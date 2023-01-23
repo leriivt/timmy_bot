@@ -140,7 +140,7 @@ task autonomous()
 
 		//---------------------UNTESTED AUTON CODE BELOW--------------------------------------------------------
 
-/*
+
 		//start intake
 		startMotor(intakeMotor, 127);
 
@@ -149,7 +149,7 @@ task autonomous()
 		startMotor(backleftMotor,-127);
 		startMotor(frontrightMotor,127);
 		startMotor(backrightMotor,127);
-		wait(0.3);
+		wait(0.4);
 		stopMotor(frontleftMotor);
 		stopMotor(backleftMotor);
 		stopMotor(frontrightMotor);
@@ -170,9 +170,21 @@ task autonomous()
 
 		wait(4); //wait a few while ball intakes
 
+
+		//turn to face scoring area
+		startMotor(frontleftMotor,127);
+		startMotor(backleftMotor,127);
+		startMotor(frontrightMotor,-127);
+		startMotor(backrightMotor,-127);
+		wait(0.4);
+		stopMotor(frontleftMotor);
+		stopMotor(backleftMotor);
+		stopMotor(frontrightMotor);
+		stopMotor(backrightMotor);
+
 		//drive back to scoring area
-		startMotor(frontleftMotor,-120); //left motors still slower
-		startMotor(backleftMotor,-120);
+		startMotor(frontleftMotor,-127); //left motors still slower
+		startMotor(backleftMotor,-127);
 		startMotor(frontrightMotor,-127);
 		startMotor(backrightMotor,-127);
 		wait(0.5);
@@ -191,7 +203,7 @@ task autonomous()
 		motor[liftMotor] = -80;
 		wait(1.6);
 		motor(liftMotor) = 0;
-*/
+
 
 	}
 
