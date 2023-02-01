@@ -105,9 +105,12 @@ task autonomous()
 		motor[liftMotor] = -80;
 		wait(1.6);
 		motor(liftMotor) = 0;
+		
+		//start intake
+		startMotor(intakeMotor, 127);
 
 		//drive to get second ball
-		startMotor(frontleftMotor,127); //left motors are slower to try to make bot turn slightly left
+		startMotor(frontleftMotor,127); 
 		startMotor(backleftMotor,127);
 		startMotor(frontrightMotor,127);
 		startMotor(backrightMotor,127);
@@ -118,6 +121,28 @@ task autonomous()
 		stopMotor(backrightMotor);
 
 		wait(4); //wait a few while ball intakes
+		
+		//drive back to scoring
+		startMotor(frontleftMotor,-127); 
+		startMotor(backleftMotor,-127);
+		startMotor(frontrightMotor,-127);
+		startMotor(backrightMotor,-127);
+		wait(0.45);
+		stopMotor(frontleftMotor);
+		stopMotor(backleftMotor);
+		stopMotor(frontrightMotor);
+		stopMotor(backrightMotor);
+		
+		//score 2nd ball
+		motor[liftMotor] = 80;
+		wait(1.6);
+		motor[liftMotor] = 0;
+
+		wait(1);
+
+		motor[liftMotor] = -80;
+		wait(1.6);
+		motor(liftMotor) = 0;
 
 	}
 	else{ //red (jumper out)
