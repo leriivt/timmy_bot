@@ -201,68 +201,68 @@ task autonomous()
 		//---------------------UNTESTED AUTON CODE BELOW--------------------------------------------------------
 
 
-		//start intake
-		startMotor(intakeMotor, 127);
+		////start intake
+		//startMotor(intakeMotor, 127);
 
-		//turn to face second ball
-		startMotor(frontleftMotor,-127);
-		startMotor(backleftMotor,-127);
-		startMotor(frontrightMotor,127);
-		startMotor(backrightMotor,127);
-		wait(0.4);
-		stopMotor(frontleftMotor);
-		stopMotor(backleftMotor);
-		stopMotor(frontrightMotor);
-		stopMotor(backrightMotor);
-
-
-
-		//drive to get second ball
-		startMotor(frontleftMotor,127); //left motors are slower to try to make bot turn slightly left
-		startMotor(backleftMotor,127);
-		startMotor(frontrightMotor,127);
-		startMotor(backrightMotor,127);
-		wait(0.45);
-		stopMotor(frontleftMotor);
-		stopMotor(backleftMotor);
-		stopMotor(frontrightMotor);
-		stopMotor(backrightMotor);
-
-		wait(4); //wait a few while ball intakes
+		////turn to face second ball
+		//startMotor(frontleftMotor,-127);
+		//startMotor(backleftMotor,-127);
+		//startMotor(frontrightMotor,127);
+		//startMotor(backrightMotor,127);
+		//wait(0.4);
+		//stopMotor(frontleftMotor);
+		//stopMotor(backleftMotor);
+		//stopMotor(frontrightMotor);
+		//stopMotor(backrightMotor);
 
 
-		//turn to face scoring area
-		startMotor(frontleftMotor,127);
-		startMotor(backleftMotor,127);
-		startMotor(frontrightMotor,-127);
-		startMotor(backrightMotor,-127);
-		wait(0.4);
-		stopMotor(frontleftMotor);
-		stopMotor(backleftMotor);
-		stopMotor(frontrightMotor);
-		stopMotor(backrightMotor);
 
-		//drive back to scoring area
-		startMotor(frontleftMotor,-127); //left motors still slower
-		startMotor(backleftMotor,-127);
-		startMotor(frontrightMotor,-127);
-		startMotor(backrightMotor,-127);
-		wait(0.5);
-		stopMotor(frontleftMotor);
-		stopMotor(backleftMotor);
-		stopMotor(frontrightMotor);
-		stopMotor(backrightMotor);
+		////drive to get second ball
+		//startMotor(frontleftMotor,127); //left motors are slower to try to make bot turn slightly left
+		//startMotor(backleftMotor,127);
+		//startMotor(frontrightMotor,127);
+		//startMotor(backrightMotor,127);
+		//wait(0.45);
+		//stopMotor(frontleftMotor);
+		//stopMotor(backleftMotor);
+		//stopMotor(frontrightMotor);
+		//stopMotor(backrightMotor);
 
-		//score second ball
-		motor[liftMotor] = 80;
-		wait(1.6);
-		motor[liftMotor] = 0;
+		//wait(4); //wait a few while ball intakes
 
-		wait(1);
 
-		motor[liftMotor] = -80;
-		wait(1.6);
-		motor(liftMotor) = 0;
+		////turn to face scoring area
+		//startMotor(frontleftMotor,127);
+		//startMotor(backleftMotor,127);
+		//startMotor(frontrightMotor,-127);
+		//startMotor(backrightMotor,-127);
+		//wait(0.4);
+		//stopMotor(frontleftMotor);
+		//stopMotor(backleftMotor);
+		//stopMotor(frontrightMotor);
+		//stopMotor(backrightMotor);
+
+		////drive back to scoring area
+		//startMotor(frontleftMotor,-127); //left motors still slower
+		//startMotor(backleftMotor,-127);
+		//startMotor(frontrightMotor,-127);
+		//startMotor(backrightMotor,-127);
+		//wait(0.5);
+		//stopMotor(frontleftMotor);
+		//stopMotor(backleftMotor);
+		//stopMotor(frontrightMotor);
+		//stopMotor(backrightMotor);
+
+		////score second ball
+		//motor[liftMotor] = 80;
+		//wait(1.6);
+		//motor[liftMotor] = 0;
+
+		//wait(1);
+
+		//motor[liftMotor] = -80;
+		//wait(1.6);
+		//motor(liftMotor) = 0;
 
 
 	}
