@@ -77,6 +77,9 @@ task autonomous()
 
 
 	if(SensorValue[jumper] == 0){  //blue (jumper in)
+		//start intake
+		startMotor(intakeMotor, 127);
+		
 		//move forward
 		startMotor(frontleftMotor,-127);
 		startMotor(backleftMotor,-127);
@@ -117,15 +120,12 @@ task autonomous()
 		wait(1.6);
 		motor(liftMotor) = 0;
 
-		//start intake
-		startMotor(intakeMotor, 127);
-
 		//drive to get second ball
 		startMotor(frontleftMotor,127);
 		startMotor(backleftMotor,127);
 		startMotor(frontrightMotor,127);
 		startMotor(backrightMotor,127);
-		wait(0.45);
+		wait(0.25);
 		stopMotor(frontleftMotor);
 		stopMotor(backleftMotor);
 		stopMotor(frontrightMotor);
@@ -138,7 +138,7 @@ task autonomous()
 		startMotor(backleftMotor,-127);
 		startMotor(frontrightMotor,-127);
 		startMotor(backrightMotor,-127);
-		wait(0.45);
+		wait(0.25);
 		stopMotor(frontleftMotor);
 		stopMotor(backleftMotor);
 		stopMotor(frontrightMotor);
