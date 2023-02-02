@@ -186,16 +186,16 @@ task autonomous()
 		stopMotor(frontrightMotor);
 		stopMotor(backrightMotor);
 
-		////score ball
-		//motor[liftMotor] = 80;
-		//wait(1.6);
-		//motor[liftMotor] = 0;
+		//score ball
+		motor[liftMotor] = 80;
+		wait(1.6);
+		motor[liftMotor] = 0;
 
-		//wait(1);
+		wait(1);
 
-		//motor[liftMotor] = -80;
-		//wait(1.6);
-		//motor(liftMotor) = 0;
+		motor[liftMotor] = -80;
+		wait(1.6);
+		motor(liftMotor) = 0;
 
 
 		//---------------------UNTESTED AUTON CODE BELOW--------------------------------------------------------
