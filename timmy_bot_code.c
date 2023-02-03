@@ -79,7 +79,7 @@ task autonomous()
 	if(SensorValue[jumper] == 0){  //blue (jumper in)
 		//start intake
 		startMotor(intakeMotor, 127);
-		
+
 		//move forward
 		startMotor(frontleftMotor,-127);
 		startMotor(backleftMotor,-127);
@@ -103,7 +103,7 @@ task autonomous()
 		startMotor(backleftMotor,-127);
 		startMotor(frontrightMotor,-127);
 		startMotor(backrightMotor,-127);
-		wait(0.25);
+		wait(0.3);
 		stopMotor(frontleftMotor);
 		stopMotor(backleftMotor);
 		stopMotor(frontrightMotor);
@@ -121,11 +121,11 @@ task autonomous()
 		motor(liftMotor) = 0;
 
 		//drive to get second ball
-		startMotor(frontleftMotor,127);
-		startMotor(backleftMotor,127);
-		startMotor(frontrightMotor,127);
-		startMotor(backrightMotor,127);
-		wait(0.25);
+		startMotor(frontleftMotor,100);
+		startMotor(backleftMotor,100);
+		startMotor(frontrightMotor,100);
+		startMotor(backrightMotor,100);
+		wait(0.45);
 		stopMotor(frontleftMotor);
 		stopMotor(backleftMotor);
 		stopMotor(frontrightMotor);
@@ -134,11 +134,11 @@ task autonomous()
 		wait(4); //wait a few while ball intakes
 
 		//drive back to scoring
-		startMotor(frontleftMotor,-127);
-		startMotor(backleftMotor,-127);
-		startMotor(frontrightMotor,-127);
-		startMotor(backrightMotor,-127);
-		wait(0.25);
+		startMotor(frontleftMotor,-100);
+		startMotor(backleftMotor,-100);
+		startMotor(frontrightMotor,-100);
+		startMotor(backrightMotor,-100);
+		wait(0.45);
 		stopMotor(frontleftMotor);
 		stopMotor(backleftMotor);
 		stopMotor(frontrightMotor);
