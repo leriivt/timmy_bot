@@ -1,4 +1,5 @@
-#pragma config(Sensor, dgtl11,  jumper,         sensorDigitalIn)
+#pragma config(Sensor, dgtl10, jumperWait,     sensorDigitalIn)
+#pragma config(Sensor, dgtl11, jumper,         sensorDigitalIn)
 #pragma config(Motor,  port1,           frontleftMotor, tmotorVex393_HBridge, openLoop)
 #pragma config(Motor,  port2,           backleftMotor, tmotorVex393_MC29, openLoop)
 #pragma config(Motor,  port3,           backrightMotor, tmotorVex393_MC29, openLoop, reversed)
@@ -75,17 +76,21 @@ task autonomous()
 	//stopMotor(backrightMotor);
 	//wait(0.5);
 
+	if(SensorValue[jumperWait] == 0){
+		wait(5);
+	}
+
 
 	if(SensorValue[jumper] == 0){  //blue (jumper in)
 		//start intake
-		startMotor(intakeMotor, 127);
+		//startMotor(intakeMotor, 127);
 
 		//move forward
 		startMotor(frontleftMotor,-127);
 		startMotor(backleftMotor,-127);
 		startMotor(frontrightMotor,-127);
 		startMotor(backrightMotor,-127);
-		wait(2.1);
+		wait(1.85);
 		stopMotor(frontleftMotor);
 		stopMotor(backleftMotor);
 		stopMotor(frontrightMotor);
@@ -103,7 +108,7 @@ task autonomous()
 		startMotor(backleftMotor,-127);
 		startMotor(frontrightMotor,-127);
 		startMotor(backrightMotor,-127);
-		wait(0.3);
+		wait(0.35);
 		stopMotor(frontleftMotor);
 		stopMotor(backleftMotor);
 		stopMotor(frontrightMotor);
@@ -119,6 +124,10 @@ task autonomous()
 		motor[liftMotor] = -80;
 		wait(1.6);
 		motor(liftMotor) = 0;
+//2ball start
+
+		////start intake
+		startMotor(intakeMotor, 127);
 
 		//drive to get second ball
 		startMotor(frontleftMotor,100);
