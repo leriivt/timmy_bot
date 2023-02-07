@@ -124,7 +124,7 @@ task autonomous()
 		motor[liftMotor] = -80;
 		wait(1.6);
 		motor(liftMotor) = 0;
-//2ball start
+		//2ball start
 
 		////start intake
 		startMotor(intakeMotor, 127);
@@ -305,16 +305,6 @@ task usercontrol()
 		motor[frontleftMotor] = vexRT[Ch3];
 		motor[backleftMotor]  = vexRT[Ch3];
 
-
-		//motor[frontleftMotor] = vexRT[Ch3];
-		//motor[backleftMotor] = vexRT[Ch3];
-		//motor[frontrightMotor] = vexRT[Ch3];
-		//motor[backrightMotor] = vexRT[Ch3];
-
-		//motor[frontleftMotor]  = (vexRT[Ch2] + vexRT[Ch1])/2;  // (y + x)/2
-		//motor[frontrightMotor]  = (vexRT[Ch2] + vexRT[Ch1])/2;  // (y + x)/2
-		//   motor[backrightMotor] = (vexRT[Ch2] - vexRT[Ch1])/2;  // (y - x)/2
-		//motor[backleftMotor] = (vexRT[Ch2] - vexRT[Ch1])/2;  // (y - x)/2
 		//intake
 		if(vexRT[Btn5U] == 1){
 			intakeSpeed = 127;
@@ -328,34 +318,52 @@ task usercontrol()
 
 		motor[intakeMotor] = intakeSpeed;
 
-		//if(vexRT[Btn5U] == 1)
+		////lift OLD (Uncomment if the new code is broken)
+		//if(vexRT[Btn6U] == 1)
 		//{
-		//	motor[intakeMotor] = 127;
+		//	motor[liftMotor] = 127;
 		//}
-		//else if(vexRT[Btn5D] == 1)
+		//else if(vexRT[Btn6D] == 1)
 		//{
-		//	motor[intakeMotor] = -127;
+		//	motor[liftMotor] = -127;
 		//}
 		//else
 		//{
-		//	motor[intakeMotor] = 0;
+		//	motor[liftMotor] = 0;
 		//}
 
-		//lift
+		//lift NEW (Experimental make sure that this doesn't override anything)
+		//Recomment if this is broken
+		//strong up
 		if(vexRT[Btn6U] == 1)
 		{
 			motor[liftMotor] = 127;
 		}
+		//strong down
 		else if(vexRT[Btn6D] == 1)
 		{
 			motor[liftMotor] = -127;
 		}
+		//weak down
+		else if(vexRT[Btn8D] == 1)
+		{
+			motor[liftMotor] = -40;
+		}
+		//weak up
+		else if(vexRT[Btn8U] == 1)
+		{
+			motor[liftMotor] = 40;
+		}
+		//if none of the lift buttons are pressed lift should be off
+
 		else
 		{
 			motor[liftMotor] = 0;
 		}
+		//FOR SAFETY CONCERNS MAKE SURE THIS PART IN PARTICULAR ACTUALLY WORKS
 
 		//Special Buttons
+		//Auto Score
 		if(vexRT[Btn7L] == 1)
 		{
 			motor[liftMotor] = 80;
@@ -369,6 +377,32 @@ task usercontrol()
 			motor(liftMotor) = 0;
 		}
 		//Special Buttons End
+
+		//Experimental Buttons
+
+		//Experimental Auto Lift (Absolutely Needs Testing)
+		if(vexRT[Btn7R] == 1)
+		{
+			motor[liftMotor] = 80;
+			wait(1.2);
+			motor[liftMotor] = 40;
+			wait(0.8);
+			motor[liftMotor] = 0;
+
+		}
+		//Experimental Auto Reset (Absolutely Needs Testing)
+		//If this works combine this with the experimental Auto-Lift and replace the actual auto score
+		if(vexRT[Btn7D] == 1)
+		{
+			motor[liftMotor] = -40;
+			wait(0.8);
+			motor[liftMotor] = -80;
+			wait(1.2);
+			motor[liftMotor] = 0;
+
+		}
+
+		//Experimental Buttons End
 		//remotecontrolend
 	}
 }
